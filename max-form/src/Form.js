@@ -87,27 +87,17 @@ export default function Form() {
           };
 
           const formSchema = yup.object().shape({
-            name: yup.
-            string().
-            required("Name is required, bruh"),
+            name: yup.string().required("Name is required, bruh"),
 
-            email: yup
-              .string()
-              .email("Get yo email right")
-              .required("You gotta have yo email"),
+            email: yup.string().email("Get yo email right").required("You gotta have yo email"),
 
-            password: yup
-            .string()
-            .min(6, "6 character password brudda.")
-            .required("Bruh, we need a password"),
+            password: yup.string().min(6, "6 character password brudda.").required("Bruh, we need a password"),
 
-            terms: yup.
-            boolean().
-            oneOf([true], "Just check the darn box")
+            terms: yup.boolean().oneOf([true], "Just check the darn box")
           });
 
           useEffect(() => {
-            formSchema.isValid(formState).then((isValid) => {
+            formSchema.isValid(formState).then(isValid => {
               
               setButtonDisabled(!isValid); 
             });
@@ -137,7 +127,7 @@ export default function Form() {
               <input id="termsInput" type="checkbox" name="terms" />
               {errors.terms.length > 0 ? <p className="error">{errors.terms}</p> : null}
             </label>
-            <button disabled={buttonDisabled} type="submit">
+            <button type="submit">
               Submit
             </button>
             <pre>{JSON.stringify(post, null, 2)}</pre>
